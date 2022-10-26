@@ -16,10 +16,11 @@ from astropy.time import Time
 import matplotlib.pyplot as plt
 import numpy as np
 
+
 ##############################################################################
 # Lets grab the positions of each of the planets in stonyhurt coordinates.
 obstime = Time('2014-05-15T07:54:00.005')
-planet_list = ['earth', 'venus', 'mars', 'mercury', 'jupiter', 'neptune', 'uranus']
+planet_list = ['sun', 'earth', 'venus', 'mars']
 planet_coord = [get_body_heliographic_stonyhurst(this_planet, time=obstime) for this_planet in planet_list]
 
 ##############################################################################

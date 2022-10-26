@@ -13,12 +13,16 @@
 import matplotlib.pyplot as plt
 # import math
 import datetime
-import solarsystem
-# import planetview
-# from libraries.planetview import solarsystem
+from datetime import datetime
+from pytz import timezone
 
-now    = datetime.datetime.now()
-year   = now.year
+import solarsystem
+# # import planetview
+# from libraries.planetview import solarsystem
+est = timezone('US/Eastern')
+now = datetime.now(est)
+# now    = datetime.datetime.now(datetime.timezone.etc)
+year = now.year
 month  = now.month
 day    = now.day
 # nameOfDay = now.strftime()
@@ -37,13 +41,11 @@ print(f"{now:%a, %d %b %Y}, {hour}:{minute}")
 view='horizontal'
 H = solarsystem.Heliocentric(year=year, month=month, day=day, hour=hour, minute=minute, dst=dst, view=view )
 
-planets=H.planets()
-distances=[]
-print('Planet', '   \t','Longitude', '  \t','Latitude', '   \t','Distance')
+planets_dict=H.planets()
+print('Planet','   \t','Longitude','   \t','Latitude','   \t','Distance in AU')
 print('-------------------------------------------------------------------')
-for key in planets:
-    distances.append(planets[key][2])
-    elements = planets[key]
-    print(key, '   \t',round(elements[0],2), '  \t',round(elements[1],2), '   \t',round(elements[2],2))
+for planet in planets_dict:
+    pos=planets_dict[planet]
+    print(planet,'   \t',round(pos[0],2),'   \t',round(pos[1],2),'   \t',round(pos[2],2))
 print()
 print('Distance is in AU')
