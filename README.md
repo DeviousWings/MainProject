@@ -1,0 +1,6 @@
+Learned
+
+Pulled python librarys
+
+
+
